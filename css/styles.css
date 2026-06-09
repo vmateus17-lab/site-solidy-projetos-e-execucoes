@@ -228,6 +228,22 @@ button {
   transform: translateY(0);
 }
 
+.btn--whatsapp {
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: var(--color-white);
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+}
+
+.btn--whatsapp:hover {
+  background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
+  box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn--whatsapp:active {
+  transform: translateY(0);
+}
+
 .btn--outline {
   background: transparent;
   color: var(--color-white);
@@ -1657,5 +1673,15 @@ button {
   .btn {
     padding: 14px 24px;
     font-size: var(--fs-xs);
+  }
+}
+
+/* ============================================================
+   RESPONSIVIDADE (MOBILE)
+   ============================================================ */
+@media (max-width: 768px) {
+  .btn {
+    width: 100%;
+    text-align: center;
   }
 }
