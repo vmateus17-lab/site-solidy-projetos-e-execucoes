@@ -203,3 +203,35 @@ document.addEventListener('DOMContentLoaded', () => {
     startSlideShow();
   }
 });
+
+// ============================================================
+// 8. CATALOG MODAL
+// ============================================================
+function openCatalogModal(collectionName, imageSrc) {
+  const modal = document.getElementById('catalog-modal');
+  const titleEl = document.getElementById('catalog-modal-title');
+  const imgEl = document.getElementById('catalog-modal-img');
+  const btnEl = document.getElementById('catalog-modal-whatsapp');
+
+  if (modal && titleEl && imgEl && btnEl) {
+    titleEl.textContent = collectionName;
+    imgEl.src = imageSrc;
+    
+    // Configurar link do WhatsApp
+    const phone = "5551981069204";
+    const message = `Olá, gostaria de solicitar um orçamento para os produtos da linha de ${collectionName}.`;
+    const encodedMessage = encodeURIComponent(message);
+    btnEl.href = `https://wa.me/${phone}?text=${encodedMessage}`;
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Evita scroll do fundo
+  }
+}
+
+function closeCatalogModal() {
+  const modal = document.getElementById('catalog-modal');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
