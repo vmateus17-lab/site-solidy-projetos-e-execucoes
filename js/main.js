@@ -131,4 +131,75 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }, 250);
   });
+
+  // ============================================================
+  // 7. SLIDESHOW (Treinamentos)
+  // ============================================================
+  const slides = document.querySelectorAll('.slideshow-slide');
+  const dots = document.querySelectorAll('.slideshow-dot');
+  const prevBtn = document.querySelector('.slideshow-prev');
+  const nextBtn = document.querySelector('.slideshow-next');
+  let slideIndex = 0;
+  let slideInterval;
+
+  if (slides.length > 0) {
+    function showSlide(index) {
+      if (index >= slides.length) slideIndex = 0;
+      if (index < 0) slideIndex = slides.length - 1;
+
+      slides.forEach(slide => slide.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+
+      slides[slideIndex].classList.add('active');
+      dots[slideIndex].classList.add('active');
+    }
+
+    function nextSlide() {
+      slideIndex++;
+      showSlide(slideIndex);
+    }
+
+    function prevSlide() {
+      slideIndex--;
+      showSlide(slideIndex);
+    }
+
+    function startSlideShow() {
+      slideInterval = setInterval(nextSlide, 5000); // 5 seconds
+    }
+
+    function stopSlideShow() {
+      clearInterval(slideInterval);
+    }
+
+    prevBtn.addEventListener('click', () => {
+      prevSlide();
+      stopSlideShow();
+      startSlideShow(); // restart interval
+    });
+
+    nextBtn.addEventListener('click', () => {
+      nextSlide();
+      stopSlideShow();
+      startSlideShow();
+    });
+
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        slideIndex = idx;
+        showSlide(slideIndex);
+        stopSlideShow();
+        startSlideShow();
+      });
+    });
+
+    // Pause on hover
+    const slideshowContainer = document.querySelector('.slideshow-container');
+    slideshowContainer.addEventListener('mouseenter', stopSlideShow);
+    slideshowContainer.addEventListener('mouseleave', startSlideShow);
+
+    // Initialize
+    showSlide(slideIndex);
+    startSlideShow();
+  }
 });
