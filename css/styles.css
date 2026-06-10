@@ -1007,9 +1007,10 @@ button {
   background: var(--color-gray-50);
 }
 
+/* Grid de produtos */
 .products__grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: var(--space-lg);
   margin-top: var(--space-2xl);
 }

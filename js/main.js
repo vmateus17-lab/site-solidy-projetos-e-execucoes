@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 5. SMOOTH SCROLL for anchor links
   // ============================================================
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
       e.preventDefault();
       const targetId = this.getAttribute('href');
       const targetEl = document.querySelector(targetId);
@@ -216,7 +216,7 @@ function openCatalogModal(collectionName, imageSrc) {
   if (modal && titleEl && imgEl && btnEl) {
     titleEl.textContent = collectionName;
     imgEl.src = imageSrc;
-    
+
     // Configurar link do WhatsApp
     const phone = "5551981069204";
     const message = `Olá, gostaria de solicitar um orçamento para os produtos da linha de ${collectionName}.`;
